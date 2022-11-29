@@ -1,8 +1,15 @@
 import Image from 'next/image';
 import Climat from './Climat'
+import {AiFillStar} from 'react-icons/ai'
+import {useContext} from 'react'
+import { FavouriteContext } from '../context/Favourites';
 
 const Weather = ({ data }) => {
-  console.log(data);
+  const {favourites, setFavourites} = useContext(FavouriteContext)
+  
+ const handleFavourite = (city) => {
+  setFavourites([city, ...favourites])
+ }
   return (
     <div className='relative flex flex-col justify-between max-w-[500px] w-full h-[90vh] m-auto p-4 text-gray-300 z-10'>
       {/* Top */}
@@ -18,6 +25,8 @@ const Weather = ({ data }) => {
         </div>
         <p className='text-9xl'>{((data.main.temp - 32)/1.8).toFixed(0)}&#176;</p>
       </div>
+      <button onClick={() => handleFavourite(data.name)} className='rounded bg-black/50 opacity-60 hover:opacity-100 w-2/5 m-auto p-3 flex justify-center items-center'> <span className='pr-1'>Ajouter aux favoris</span> <AiFillStar/> </button>
+
       {/* Bottom */}
 
 <div className='bg-black/50 relative p-8 rounded-md'>
