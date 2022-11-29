@@ -8,7 +8,11 @@ const Weather = ({ data }) => {
   const {favourites, setFavourites} = useContext(FavouriteContext)
   
  const handleFavourite = (city) => {
-  setFavourites([city, ...favourites])
+  const fav = favourites.includes(city)
+    console.log("fav" ,fav);
+    if (!fav) {
+      setFavourites([city, ...favourites])
+    }
  }
   return (
     <div className='relative flex flex-col justify-between max-w-[500px] w-full h-[90vh] m-auto p-4 text-gray-300 z-10'>

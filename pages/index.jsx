@@ -58,9 +58,8 @@ useEffect(() => {
   };
 
 
-  const fetchFav = async(city) => {
-    await setStateAsync(city)
-       
+  const fetchFav = async(city) => { 
+      await setStateAsync(city)  
   }
 
 
@@ -91,8 +90,8 @@ useEffect(() => {
           
             {favourites?.length > 0 && favourites.map((e, index) => {
               return (
-                <a key={index} onClick={() => fetchFav(e)} className='bg-black/50 cursor-pointer relative m-2 p-2 rounded-md top-0 left-0 flex flex-col w-auto'>
-                {e} 
+                <a key={index} onClick={() => fetchFav(e)} className='bg-black/50 opacity-60 hover:opacity-100 cursor-pointer relative m-2 p-2 rounded-md top-0 left-0 w-full max-w-[100px] truncate'>
+                {e}
                   <button className='absolute top-0 right-0 z-50' onClick={()=> removeFav(e)}> <IoIosClose/> </button>
                 </a>
               ) 
